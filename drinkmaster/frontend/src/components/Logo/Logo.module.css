@@ -1,0 +1,11 @@
+.logoLight {
+  display: none;
+}
+
+:global([data-theme='light']) .logoDark {
+  display: none;
+}
+
+:global([data-theme='light']) .logoLight {
+  display: block;
+}

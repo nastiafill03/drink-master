@@ -1,0 +1,146 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-bottom: 140px;
+  width: 100%;
+  min-width: 0;
+}
+
+.top {
+  display: grid;
+  grid-template-columns: minmax(0, 400px) minmax(0, 400px);
+  gap: 40px;
+  align-items: start;
+  width: 100%;
+  max-width: 840px;
+}
+
+.imgSection,
+.descSection {
+  min-width: 0;
+}
+
+.imgWrap {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  transition: border-color 0.2s;
+}
+
+.preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imgPlaceholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.plusIcon {
+  width: 48px;
+  height: 48px;
+  display: block;
+}
+
+.addPhoto {
+  font-size: 13px;
+  color: var(--white);
+}
+
+.bottomSection {
+  width: 100%;
+  max-width: 840px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.recipeField {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.recipeTitle {
+  font-size: 40px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 40px;
+}
+
+.textarea {
+  background: transparent;
+  border: 1px solid var(--gray-change);
+  border-radius: 16px;
+  padding: 14px 24px;
+  color: var(--gray-change);
+  font-size: 16px;
+  font-family: inherit;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 180px;
+}
+.textarea:focus { border-color: var(--text); }
+.textarea::placeholder { color: var(--text); opacity: 0.7; }
+
+.error {
+  display: block;
+  color: #e53e3e;
+  font-size: 12px;
+}
+
+.actions {
+  display: flex;
+}
+
+.submitBtn {
+  background: var(--button);
+  color: var(--bg);
+  border: none;
+  border-radius: 40px;
+  padding: 18px 44px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.submitBtn:hover { 
+  background-color: var(--button-hover);
+  color: var(--text);
+ }
+
+@media (max-width: 1372px) {
+  .top { grid-template-columns: 1fr 1fr; }
+  .bottomSection { width: 100%; }
+}
+
+@media (max-width: 768px) {
+  .form {
+    gap: 80px;
+  }
+
+  .top {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .imgWrap {
+    width: 100%;
+    border-radius: 16px;
+    aspect-ratio: 1;
+  }
+}

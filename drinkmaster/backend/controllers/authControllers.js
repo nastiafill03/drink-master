@@ -6,13 +6,12 @@ require('dotenv').config();
 
 const signup = async (req, res, next) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password, birthDate } = req.body;
     const existing = await User.findOne({ email });
     if (existing) throw HttpError(409, 'Email already in use');
 
-    
     const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = await User.create({ name, email, password: hashedPassword });
+    const newUser = await User.create({ name, email, password: hashedPassword, birthDate: birthDate ?? null });
 
     const token = jwt.sign(
       { id: newUser._id },
@@ -23,7 +22,12 @@ const signup = async (req, res, next) => {
 
     res.status(201).json({
       token,
-      user: { name: newUser.name, email: newUser.email },
+      user: {
+        _id: newUser._id,
+        name: newUser.name,
+        email: newUser.email,
+        birthDate: newUser.birthDate,
+      },
     });
   } catch (err) {
     next(err);
@@ -46,6 +50,7 @@ const signin = async (req, res, next) => {
     res.status(200).json({
       token,
       user: {
+        _id: user._id,
         name: user.name,
         email: user.email,
         avatarURL: user.avatarURL,

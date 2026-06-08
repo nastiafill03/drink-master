@@ -1,0 +1,41 @@
+.page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding-top: 160px;
+  padding-bottom: 140px;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 40px;
+}
+
+
+.desc {
+  font-size: 14px;
+  color: var(--gray-change);
+  margin-bottom: 60px;
+}
+
+.section {
+  margin-bottom: 36px;
+}
+
+.heading {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+.text {
+  font-size: 16px;
+  color: var(--gray-change);
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .title { font-size: 32px; }
+  .heading { font-size: 18px; }
+}

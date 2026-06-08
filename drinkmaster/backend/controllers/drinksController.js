@@ -1,4 +1,5 @@
 const Drink = require('../models/drinkModel');
+const Ingredient = require('../models/ingredients');
 const HttpError = require('../helpers/HttpError');
 
 const isAdult = (birthDate) => {
@@ -6,6 +7,47 @@ const isAdult = (birthDate) => {
   const birth = new Date(birthDate);
   const ageMs = Date.now() - birth.getTime();
   return ageMs / (1000 * 60 * 60 * 24 * 365.25) >= 18;
+};
+
+const normalizeTitle = (title = '') => title.trim().toLowerCase();
+
+const getIngredientsByTitle = async (ingredients = []) => {
+  const titles = [...new Set(ingredients.map((item) => item.title).filter(Boolean))];
+  if (!titles.length) return new Map();
+
+  const docs = await Ingredient
+    .find({ title: { $in: titles } }, 'title ingredientThumb')
+    .collation({ locale: 'en', strength: 2 });
+  return docs.reduce((acc, ingredient) => {
+    acc.set(normalizeTitle(ingredient.title), ingredient);
+    return acc;
+  }, new Map());
+};
+
+const attachIngredientIds = async (ingredients = []) => {
+  const ingredientsByTitle = await getIngredientsByTitle(ingredients);
+
+  return ingredients.map((item) => {
+    const ingredient = ingredientsByTitle.get(normalizeTitle(item.title));
+    return {
+      ...item,
+      ingredientId: item.ingredientId ?? ingredient?._id ?? null,
+    };
+  });
+};
+
+const attachIngredientThumbs = async (ingredients = []) => {
+  const ingredientsByTitle = await getIngredientsByTitle(ingredients);
+
+  return ingredients.map((item) => {
+    if (item.ingredientId?.ingredientThumb) return item;
+
+    const ingredient = ingredientsByTitle.get(normalizeTitle(item.title));
+    return {
+      ...item,
+      ingredientId: ingredient ?? item.ingredientId ?? null,
+    };
+  });
 };
 
 // GET /drinks/mainpage ─────────────────────────────────
@@ -71,11 +113,14 @@ const search = async (req, res, next) => {
 // GET /drinks/:drinkId ─────────────────────────────────
 const getById = async (req, res, next) => {
   try {
-    const drink = await Drink.findById(req.params.drinkId);
+    const drink = await Drink.findById(req.params.drinkId)
+      .populate('ingredients.ingredientId', 'title ingredientThumb')
+      .lean();
     if (!drink) throw HttpError(404, 'Drink not found');
     if (!isAdult(req.user.birthDate) && drink.alcoholic !== 'Non alcoholic') {
       throw HttpError(403, 'Users under 18 can only view non-alcoholic drinks');
     }
+    drink.ingredients = await attachIngredientThumbs(drink.ingredients);
     res.status(200).json(drink);
   } catch (err) { next(err); }
 };
@@ -103,8 +148,10 @@ const addOwn = async (req, res, next) => {
     }
 
     const drinkThumb = req.file ? req.file.path : null;
+    const ingredients = await attachIngredientIds(req.body.ingredients);
     const drink = await Drink.create({
       ...req.body,
+      ingredients,
       drinkThumb,
       owner: _id,
     });
@@ -153,7 +200,8 @@ const addFavorite = async (req, res, next) => {
       { $addToSet: { users: _id } },
       { new: true }
     );
-    res.status(200).json(drink);
+    const favoritesCount = await Drink.countDocuments({ users: _id });
+    res.status(200).json({ drink, favoritesCount });
   } catch (err) { next(err); }
 };
 

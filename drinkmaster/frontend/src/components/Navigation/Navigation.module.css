@@ -1,0 +1,35 @@
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.link {
+  text-decoration: none;
+  color: var(--button);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+  border: 1px solid rgba(243, 243, 243, 0.20);
+  border-radius: 40px;
+  display: flex;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+
+}
+.link:hover { 
+  background-color: var(--surface); 
+    border: 1px solid var(--surface);
+    color:var(--white);
+}
+.active { 
+  background-color: var(--surface);
+  border: 1px solid var(--surface);
+  color:var(--white);
+ }
+
+@media (max-width: 768px) {
+  .nav { gap: 16px; }
+  .link { font-size: 13px; }
+}

@@ -6,8 +6,8 @@ require('dotenv').config();
 const getCurrent = async (req, res, next) => {
   try {
     // req.user вже є завдяки authenticate middleware
-    const { name, email, avatarURL, birthDate } = req.user;
-    res.status(200).json({ name, email, avatarURL, birthDate });
+    const { _id, name, email, avatarURL, birthDate } = req.user;
+    res.status(200).json({ _id, name, email, avatarURL, birthDate });
   } catch (err) {
     next(err);
   }
@@ -29,6 +29,7 @@ const update = async (req, res, next) => {
     const updated = await User.findByIdAndUpdate(_id, updateData, { new: true });
 
     res.status(200).json({
+      _id: updated._id,
       name: updated.name,
       avatarURL: updated.avatarURL,
       birthDate: updated.birthDate,

@@ -1,0 +1,110 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.catTitle {
+  font-size: 40px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 40px;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 80px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.cardLink {
+  text-decoration: none;
+  display: block;
+}
+
+.img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  display: block;
+  object-fit: cover;
+}
+
+.cardBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+}
+
+.name {
+  color: var(--text);
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.more {
+  color: var(--gray);
+  font-size: 16px;
+}
+
+.more:hover {
+  color: var(--text);
+    transition: color 0.2s;
+}
+
+.seeOthers {
+  display: block;
+  padding: 18px 44px;
+  border-radius: 42px;
+  background-color: var(--button);
+  text-decoration: none;
+  color: var(--bg);
+  width: fit-content;
+  margin: 24px auto 140px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+}
+.seeOthers:hover { 
+  background-color: var(--button-hover);
+  color: var(--white);
+ }
+
+@media (max-width: 1140px) {
+  .catTitle { font-size: 28px; }
+
+  .list {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 740px;
+  }
+
+  .img {
+    max-width: 360px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .list {
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+  }
+
+  .img {
+    width: 100%;
+    max-width: none;
+  }
+}

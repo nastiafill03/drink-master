@@ -1,0 +1,48 @@
+.popup {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  background: var(--surface);
+  border-radius: 8px;
+  padding: 24px 20px ;
+  min-width: 177px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  z-index: 100;
+}
+
+.editRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 100%;
+}
+
+.editLabel {
+  color: var(--white);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.logoutBtn {
+  width: 100%;
+  background: var(--white);
+  color: var(--surface);
+  border: none;
+  border-radius: 200px;
+  padding: 14px 0;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.logoutBtn:hover { 
+  color: var(--white);
+  background-color: transparent;
+  border: 1px solid rgba(243, 243, 243, 0.20);
+}

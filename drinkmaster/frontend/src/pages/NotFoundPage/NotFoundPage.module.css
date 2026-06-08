@@ -1,0 +1,27 @@
+.page {
+  display: flex;
+  justify-content: center;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 200px;
+  margin-bottom: 140px;
+}
+
+.digit {
+  color: rgba(64, 112, 205, 0.10);
+  font-size: 200px;
+  font-weight: 600;
+  line-height: 1;
+  user-select: none;
+}
+
+.img {
+  width: 158px;
+  height: 201px;
+  object-fit: contain;
+  display: block;
+}

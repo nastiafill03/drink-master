@@ -1,0 +1,129 @@
+.wrap {
+  position: relative;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  min-width: 200px;
+  padding: 15px 24px;
+  background-color: var(--surface);
+  border: 1px solid transparent;
+  border-radius: 200px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  color: var(--text);
+  font-size: 14px;
+  font-family: inherit;
+  text-align: left;
+}
+
+.label   { color: var(--white); }
+.placeholder { color: var(--white); }
+
+.arrow {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  background-color: var(--white);
+  -webkit-mask-image: url(../../assets/arrow-icon.svg);
+  mask-image: url(../../assets/arrow-icon.svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-position: center;
+  mask-position: center;
+  transform: rotate(180deg);
+  transition: transform 0.2s ease;
+}
+.arrowOpen { transform: rotate(0deg); }
+
+.arrowUnderline { background-color: var(--text); }
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--dropdown);
+  border-top: none;
+  border-radius: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 8px 0 12px;
+  max-height: 260px;
+  overflow-y: auto;
+  z-index: 100;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gray) transparent;
+}
+.dropdown::-webkit-scrollbar { width: 4px; }
+.dropdown::-webkit-scrollbar-track { background: transparent; }
+.dropdown::-webkit-scrollbar-thumb { background: var(--gray); border-radius: 4px; }
+
+.option {
+  padding: 10px 24px;
+  font-size: 14px;
+  color: var(--gray);
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+.option:hover { color: var(--text) }
+.option.active { font-weight: 600; color: var(--text); }
+
+.triggerField {
+  background-color: transparent;
+  border-color: var(--gray-change);
+  width: 100%;
+  min-width: unset;
+}
+
+.triggerField:focus,
+.triggerField.triggerOpen {
+  border-color: var(--text);
+}
+
+.triggerField .placeholder {
+  color: var(--gray-change);
+}
+
+.triggerUnderline {
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--gray-change);
+  border-radius: 0;
+  padding: 10px 0 18px;
+  min-width: unset;
+  font-size: 16px;
+  transition: border-color 0.2s;
+}
+
+.triggerUnderline:focus,
+.triggerUnderline.triggerOpen {
+  border-color: var(--text);
+}
+
+.underlineLabel { color: var(--text); }
+.underlinePlaceholder { color: var(--text); opacity: 0.7; }
+
+@media (max-width: 1372px) {
+  .trigger:not(.triggerField):not(.triggerUnderline) {
+    width: 332px;
+  }
+}
+
+@media (max-width: 767px) {
+  .wrap {
+    width: 100%;
+  }
+
+  .trigger:not(.triggerField):not(.triggerUnderline) {
+    width: 100%;
+    min-width: 0;
+  }
+}

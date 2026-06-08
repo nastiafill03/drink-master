@@ -1,0 +1,79 @@
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.welcomeNav {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.welcomePrimary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  text-decoration: none;
+  border: 1px solid var(--text);
+  background: var(--text);
+  color: var(--surface);
+  padding: 18px 44px;
+  border-radius: 40px;
+  font-size: 16px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.welcomePrimary:hover {
+  border-color: rgba(243, 243, 243, 0.20);
+  color: var(--text);
+  background: transparent;
+}
+
+.welcomeSecondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  text-decoration: none;
+  border: 1px solid rgba(243, 243, 243, 0.20);
+  color: var(--text);
+  padding: 18px 44px;
+  border-radius: 40px;
+  font-size: 18px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: border-color 0.2s;
+}
+.welcomeSecondary:hover {
+  border-color: var(--text);
+  color: var(--surface);
+  background: var(--text);
+}
+
+@media (max-width: 767px) {
+  .welcomeNav { justify-content: center; }
+}
+
+.link {
+  text-decoration: none;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.link:hover { color: var(--accent); }
+
+.btn {
+  text-decoration: none;
+  background: var(--accent);
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 40px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+.btn:hover { opacity: 0.85; }

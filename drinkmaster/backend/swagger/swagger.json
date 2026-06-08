@@ -46,7 +46,12 @@
         "tags": ["Auth"], "summary": "Реєстрація",
         "requestBody": { "required": true, "content": { "application/json": {
           "schema": { "type": "object", "required": ["name","email","password"],
-            "properties": { "name":{"type":"string"}, "email":{"type":"string"}, "password":{"type":"string"} }
+            "properties": {
+              "name":      {"type":"string"},
+              "email":     {"type":"string"},
+              "password":  {"type":"string"},
+              "birthDate": {"type":"string","format":"date","description":"ISO date, e.g. 2000-01-15"}
+            }
           }}}},
         "responses": { "201": {"description":"Створено"}, "409": {"description":"Email вже існує"} }
       }
@@ -133,7 +138,7 @@
           {"name":"category","in":"query","schema":{"type":"string"}},
           {"name":"ingredient","in":"query","schema":{"type":"string"}},
           {"name":"page","in":"query","schema":{"type":"integer","default":1}},
-          {"name":"limit","in":"query","schema":{"type":"integer","default":9}}
+          {"name":"limit","in":"query","schema":{"type":"integer","default":12}}
         ],
         "responses":{"200":{"description":"drinks + total + page + totalPages"}} }
     },
@@ -174,6 +179,10 @@
     "/drinks/favorite": {
       "get": { "tags":["Drinks"], "summary":"Улюблені коктейлі",
         "security":[{"bearerAuth":[]}],
+        "parameters": [
+          {"name":"page","in":"query","schema":{"type":"integer","default":1}},
+          {"name":"limit","in":"query","schema":{"type":"integer","default":12}}
+        ],
         "responses":{"200":{"description":"drinks + total + totalPages"}} }
     },
     "/drinks/favorite/add": {

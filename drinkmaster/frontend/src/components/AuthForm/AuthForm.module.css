@@ -1,0 +1,176 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 380px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.input {
+  background: var(--input-bg);
+  border-radius: 200px;
+  border: 1px solid rgba(243, 243, 243, 0.20);
+  opacity: 0.8;
+  padding: 15px 24px;
+  color:  rgba(243, 243, 243, 0.20);
+  font-size: 17px;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+.input:focus { border-color: var(--text); }
+.input::placeholder { color: var(--text); }
+
+.inputWrap {
+  position: relative;
+  width: 100%;
+}
+
+.inputWithIcon {
+  padding-right: 56px;
+}
+
+.inputError {
+  border-color: #da1414;
+}
+
+.inputError:focus {
+  border-color: #da1414;
+}
+
+.inputSuccess {
+  border-color: #3cbc81;
+}
+
+.inputSuccess:focus {
+  border-color: #3cbc81;
+}
+
+.statusIcon {
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.dateInputWrap :global(.react-datepicker-wrapper) {
+  width: 100%;
+}
+
+.dateInputWrap {
+  position: relative;
+  width: 100%;
+}
+
+.dateInput {
+  padding-right: 84px;
+}
+
+.dateStatusIcon {
+  right: 52px;
+}
+
+.calendarButton {
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.calendarButton img {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+.error {
+  color: #e53e3e;
+  font-size: 12px;
+}
+
+.btn {
+  margin-top: 28px;
+  background: var(--text);
+  color: var(--surface);
+  border: none;
+  border-radius: 40px;
+  padding: 18px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.btn:hover:not(:disabled) { opacity: 0.85; }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+:global(.react-datepicker) {
+  background-color: var(--surface);
+  border: 1px solid var(--surface);
+  border-radius: 8px;
+  color: #f3f3f3;
+  font-family: var(--sans);
+}
+
+:global(.react-datepicker__header) {
+  background-color: var(--surface);
+  border-bottom: 1px solid rgba(243, 243, 243, 0.20);
+}
+
+:global(.react-datepicker__current-month),
+:global(.react-datepicker__day-name),
+:global(.react-datepicker__day) {
+  color: var(--text);
+}
+:global(.react-datepicker__year-read-view--selected-year){
+  color: var(--surface);
+}
+:global(.react-datepicker__day:hover) {
+  background-color: var(--text);
+  color: var(--surface);
+  border-radius: 20px !important;
+}
+
+:global(.react-datepicker__day--selected),
+:global(.react-datepicker__day--keyboard-selected) {
+  background-color: var(--text);
+  color: var(--surface);
+  border-radius: 20px;
+}
+
+:global(.react-datepicker__day--outside-month) {
+  color: rgba(243, 243, 243, 0.35);
+}
+
+:global(.react-datepicker__year-option) {
+  color: var(--surface);
+}
+
+@media (max-width: 767px) {
+  .form {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}

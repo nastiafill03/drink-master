@@ -13,9 +13,9 @@ const drinkSchema = new Schema({
   instructions: String,
   drinkThumb:   String,   // URL фото
   ingredients: [{
-    title:          String,
-    measure:        String,
-    ingredientThumb: String,
+    title:       String,
+    measure:     String,
+    ingredientId: { type: Schema.Types.ObjectId, ref: 'Ingredient', default: null },
   }],
   owner: {
     type: Schema.Types.ObjectId,

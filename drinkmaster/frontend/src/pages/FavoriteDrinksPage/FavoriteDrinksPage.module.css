@@ -1,0 +1,27 @@
+.page {
+  margin-bottom: 140px;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  margin-top: 80px;
+}
+
+.emptyImg {
+  width: 261px;
+  height: 326px;
+  display: block;
+  object-fit: contain;
+}
+
+.emptyText {
+  color: var(--text);
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  max-width: 236px;
+  margin: 0;
+}

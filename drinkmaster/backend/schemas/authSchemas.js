@@ -25,6 +25,8 @@ const signupSchema = Joi.object({
       'string.min': 'Password must be at least 6 characters',
       'any.required': 'Password is required',
     }),
+
+  birthDate: Joi.date().optional().allow(null, ''),
 });
 
 const signinSchema = Joi.object({
