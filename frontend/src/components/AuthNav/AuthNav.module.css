@@ -16,20 +16,19 @@
   justify-content: center;
   flex-shrink: 0;
   text-decoration: none;
-  border: 1px solid var(--text);
-  background: var(--text);
-  color: var(--surface);
+  background-color: var(--white);
+  color: var(--dark-blue);
+  border: 1px solid var(--white);
   padding: 18px 44px;
   border-radius: 40px;
   font-size: 16px;
   font-weight: 600;
   white-space: nowrap;
-  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  transition: background-color 0.2s, color 0.2s;
 }
 .welcomePrimary:hover {
-  border-color: rgba(243, 243, 243, 0.20);
-  color: var(--text);
-  background: transparent;
+  background-color: transparent;
+  color: var(--white);
 }
 
 .welcomeSecondary {
@@ -38,19 +37,19 @@
   justify-content: center;
   flex-shrink: 0;
   text-decoration: none;
-  border: 1px solid rgba(243, 243, 243, 0.20);
-  color: var(--text);
+  background-color: transparent;
+  color: var(--white);
+  border: 1px solid var(--white);
   padding: 18px 44px;
   border-radius: 40px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   white-space: nowrap;
-  transition: border-color 0.2s;
+  transition: background-color 0.2s, color 0.2s;
 }
 .welcomeSecondary:hover {
-  border-color: var(--text);
-  color: var(--surface);
-  background: var(--text);
+  background-color: var(--white);
+  color: var(--dark-blue);
 }
 
 @media (max-width: 767px) {
