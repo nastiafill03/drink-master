@@ -18,15 +18,15 @@
   border: 1px solid rgba(243, 243, 243, 0.20);
   opacity: 0.8;
   padding: 15px 24px;
-  color:  rgba(243, 243, 243, 0.20);
+  color: var(--white);
   font-size: 17px;
   outline: none;
   width: 100%;
   box-sizing: border-box;
   transition: border-color 0.2s;
 }
-.input:focus { border-color: var(--text); }
-.input::placeholder { color: var(--text); }
+.input:focus { border-color: var(--white); }
+.input::placeholder { color: var(--white); }
 
 .inputWrap {
   position: relative;
