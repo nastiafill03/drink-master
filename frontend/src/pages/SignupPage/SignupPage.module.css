@@ -3,7 +3,7 @@
   width: 100%;
   min-height: 100vh;
   display: flex;
-  background-color: var(--bg);
+  background-color: var(--dark-blue);
   overflow: hidden;
 }
 
@@ -56,12 +56,12 @@
 .title {
   font-size: 40px;
   font-weight: 600;
-  color: var(--text);
+  color: var(--white);
   margin-bottom: 28px;
 }
 
 .link {
-  color: var(--text);
+  color: var(--white);
   align-self: center;
   font-size: 14px;
   text-decoration: underline;

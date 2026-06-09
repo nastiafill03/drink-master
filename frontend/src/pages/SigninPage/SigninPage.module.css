@@ -3,7 +3,7 @@
   width: 100%;
   min-height: 100vh;
   display: flex;
-  background-color: var(--bg);
+  background-color: var(--dark-blue);
   overflow: hidden;
 }
 
@@ -56,18 +56,18 @@
 .title {
   font-size: 36px;
   font-weight: 700;
-  color: var(--text);
+  color: var(--white);
   margin-bottom: 28px;
 }
 
 .sub {
-  color: var(--text);
+  color: var(--white);
   font-size: 14px;
   margin: 0;
 }
 
 .footer {
-  color: var(--text);
+  color: var(--white);
   font-size: 14px;
   margin: 0;
   text-align: center;
@@ -75,7 +75,7 @@
 }
 
 .link {
-  color: var(--text);
+  color: var(--white);
   text-decoration: none;
   font-weight: 600;
 }

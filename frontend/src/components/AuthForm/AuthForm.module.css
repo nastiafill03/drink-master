@@ -109,7 +109,7 @@
 
 .btn {
   margin-top: 28px;
-  background: var(--text);
+  background: var(--white);
   color: var(--surface);
   border: none;
   border-radius: 40px;
