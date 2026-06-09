@@ -5,9 +5,13 @@ import { selectUser } from '../../redux/auth/authSlice';
 import * as api from '../../services/api';
 import { refreshUserThunk } from '../../redux/auth/authOperations';
 import toast from 'react-hot-toast';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { subYears } from 'date-fns';
 import userIcon from '../../assets/user-icon.png';
 import editIcon from '../../assets/edit-icon.svg';
 import closeIcon from '../../assets/close-icon.svg';
+import calendarIcon from '../../assets/calendar-icon.svg';
 import blurEdit from '../../assets/blur-edit.png';
 import blurEdit1 from '../../assets/blur-edit1.png';
 import s from './UserInfoModal.module.css';
@@ -20,6 +24,8 @@ const UserInfoModal = ({ onClose }) => {
   const [name, setName] = useState(user.name ?? '');
   const [preview, setPreview] = useState(user.avatarURL ?? null);
   const [file, setFile] = useState(null);
+  const [birthDate, setBirthDate] = useState(user.birthDate ? new Date(user.birthDate) : null);
+  const datePickerRef = useRef(null);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -41,9 +47,10 @@ const UserInfoModal = ({ onClose }) => {
     const fd = new FormData();
     fd.append('name', name);
     if (file) fd.append('avatar', file);
+    if (birthDate) fd.append('birthDate', birthDate.toISOString());
     try {
       await api.updateUser(fd);
-      await dispatch(refreshUserThunk());
+      dispatch(refreshUserThunk());
       toast.success('Profile updated!');
       onClose();
     } catch {
@@ -84,6 +91,30 @@ const UserInfoModal = ({ onClose }) => {
             >
             </button>
             <img src={editIcon} alt='' width={20} height={20} />
+          </div>
+
+          <div className={s.dateField}>
+            <DatePicker
+              ref={datePickerRef}
+              selected={birthDate}
+              onChange={(date) => setBirthDate(date)}
+              placeholderText='Date of birth'
+              className={s.nameInput}
+              dateFormat='dd/MM/yyyy'
+              maxDate={new Date()}
+              showYearDropdown
+              scrollableYearDropdown
+              yearDropdownItemNumber={80}
+              openToDate={subYears(new Date(), 18)}
+            />
+            <button
+              type='button'
+              className={s.editBtn}
+              onClick={() => datePickerRef.current?.setOpen(true)}
+              aria-label='Open calendar'
+            >
+              <img src={calendarIcon} alt='' width={20} height={20} />
+            </button>
           </div>
 
           <button type='submit' className={s.saveBtn}>Save changes</button>
